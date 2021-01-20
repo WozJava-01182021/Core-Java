@@ -19,14 +19,34 @@ public class Animal { //extends Object automatically
 	private int age;
 	public int getAge() { return age; }
 	public void setAge(int a) {
-		age = a;
+		if (a < 0) {
+			age = 0;
+		}else if (a > MAX_AGE) {
+			age = a + 1;
+			System.out.println(this.toString() + " has died");
+		}else {
+			age = a;
+		}
 	}
+	
+	protected int MATURITY = 12;
+	protected int MAX_AGE = 50;
+	public int getMAX_AGE() { return MAX_AGE; }
 	
 	private int weight;
 	public int getWeight() { return weight; }
 	public void setWeight(int w) {
-		weight = w;
+		if (w>=0) weight = w;
 	}
+	
+	private byte health = 10;
+	public byte getHealth() { return health; }
+	public void setHealth(byte b) {
+		if(b <= 10 && b >=-10) {
+			health = b;
+		}
+	}
+	
 //************************CONSTRUCTORS SECTION SECTION *****************************	
 	
 	//constructors are automatically made, until you insert your own, similar to how everything extends object initially
@@ -69,6 +89,16 @@ public class Animal { //extends Object automatically
 			result = ThreadLocalRandom.current().nextInt(5,20);
 		}
 		return result;
+	}
+	
+	public void grow() {
+		setAge(age + 1);
+		int oldWeight = weight;
+		
+		weight = setRandomWeightByAge(age);
+		if (weight < oldWeight) {
+			weight = oldWeight;
+		}
 	}
 
 }

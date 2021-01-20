@@ -2,8 +2,6 @@ package kipk.core_java.common.animal.fish;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import kipk.core_java.common.animal.Animal;
-
 public class Swordfish extends Fish {
 	
 	//***********************Variables Section*************************
@@ -14,11 +12,14 @@ public class Swordfish extends Fish {
 	//***********************Constructor Section***********************
 	
 	public Swordfish() {
+		System.out.println("In Swordfish no-arg constructor");
 		setType("swordfish");
+
 	}
 	
 	public Swordfish (int a) {
 		this();
+		System.out.println("In Swordfish int constructor");
 		setAge(a);
 		setWeight(setRandomWeightByAge(a));
 	}
@@ -28,18 +29,9 @@ public class Swordfish extends Fish {
 //Class Animal overrides
 	@Override
 	public void eat() {
-		System.out.println(getType() + " chomping tree branches");
+		System.out.println(getType() + " pierces its prey");
 	}
 	
-	@Override
-	public void move() {
-		System.out.println(getType() + " shuffling ponderously");
-	}
-	
-	@Override
-	public void sleep() {
-		System.out.println(getType() + " sleeping on its feet");
-	}
 	
 	protected int setRandomWeightByAge(int a) {
 		int result;

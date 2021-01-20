@@ -10,6 +10,9 @@ public class Monkey extends Mammal {
 	
 	public Monkey() {
 		setType("monkey");
+		MAX_AGE = 20;
+		MATURITY = 4;
+		setMaxRunningSpeed(34);
 	}
 	
 	

@@ -22,28 +22,54 @@
 
 package kipk.core_java.lesson02;
 
+import java.util.List;
+
 import kipk.core_java.common.animal.Animal;
-import kipk.core_java.common.animal.fish.Swordfish;
+import kipk.core_java.common.animal.RandomAnimalBuilder;
+import kipk.core_java.common.animal.fish.*;
 import kipk.core_java.common.animal.mammals.*;
 
 public class Constructors {
 	
-	public void inClassWOrk() {
+	public void inClassWork() {
 		System.out.println(this.getClass().getSimpleName() + ".inClassWork()");
+		testOverloadedConstructors();
+		testRandomAnimalBuilder();
 		
-		Animal[] zoo =new Animal[4];
+		System.out.println("================================================================");
+
+	}
+	
+	private void testOverloadedConstructors() {
+		System.out.println("1. Test constructor overloading");
+		Animal[] zoo = new Animal[4];
 		zoo[0] = new Lion(6);
 		zoo[1] = new Elephant(30);
-		zoo[2] = new Swordfish();
-		zoo[2] = new Swordfish(20);
+		zoo[2] = new Swordfish(); //this one is calling the no-args constructor
+		zoo[3] = new Swordfish(20); //this one is calling the int constructor
 		System.out.println();
 		
 		for (Animal a :zoo) {
+			System.out.println(a);
 			a.eat();
 			a.move();
 			a.sleep();
 			System.out.println();
 		}
+	}
+	
+	private void testRandomAnimalBuilder() {
+		System.out.println("2. Test RandomAnimalBuilder");
+		List<Animal> animals = (List<Animal>)new RandomAnimalBuilder().build(6);
+		
+		for (Animal a :animals) {
+			System.out.println(a);
+			a.eat();
+			a.move();
+			a.sleep();
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 }

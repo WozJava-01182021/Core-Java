@@ -12,6 +12,9 @@ public class Lion extends Mammal {
 	
 	public Lion() {
 		setType("lion");
+		MAX_AGE = 14;
+		MATURITY = 5;
+		setMaxRunningSpeed(50);
 	}
 	public Lion (int a) {
 		this();

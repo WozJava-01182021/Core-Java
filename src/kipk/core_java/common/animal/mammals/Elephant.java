@@ -12,6 +12,9 @@ public class Elephant extends Mammal {
 	
 	public Elephant() {
 		setType("elephant");
+		MAX_AGE = 70;
+		MATURITY = 15;
+		setMaxRunningSpeed(20);
 	}
 	
 	public Elephant (int a) {

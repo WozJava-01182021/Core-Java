@@ -4,6 +4,8 @@ public class Horse extends Mammal {
 	
 	public Horse() {
 		setType("horse");
+		MAX_AGE = 30;
+		MATURITY = 12;
 	}
 
 //Class Animal overrides
