@@ -1,8 +1,11 @@
-package rukshanu.core_java.common.animal.mammals;
+package rukshanu.core_java.common.animal.fish;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Elephant extends Mammal {
+import rukshanu.core_java.common.animal.Animal;
+
+public class Swordfish extends Fish {
+	
 	//***********************Variables Section*************************
 	
 	
@@ -10,11 +13,11 @@ public class Elephant extends Mammal {
 	
 	//***********************Constructor Section***********************
 	
-	public Elephant() {
-		setType("elephant");
+	public Swordfish() {
+		setType("swordfish");
 	}
 	
-	public Elephant (int a) {
+	public Swordfish (int a) {
 		this();
 		setAge(a);
 		setWeight(setRandomWeightByAge(a));
@@ -50,3 +53,4 @@ public class Elephant extends Mammal {
 
 
 }
+

@@ -2,7 +2,7 @@ package rukshanu.core_java.common.animal.mammals;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Elephant extends Mammal {
+public class Lion extends Mammal {
 	//***********************Variables Section*************************
 	
 	
@@ -10,11 +10,13 @@ public class Elephant extends Mammal {
 	
 	//***********************Constructor Section***********************
 	
-	public Elephant() {
-		setType("elephant");
+	public Lion() {
+		setType("lion");
+		MAX_AGE = 14;
+		MATURITY = 5;
+		setMaxRunningSpeed(50);
 	}
-	
-	public Elephant (int a) {
+	public Lion (int a) {
 		this();
 		setAge(a);
 		setWeight(setRandomWeightByAge(a));
@@ -25,17 +27,17 @@ public class Elephant extends Mammal {
 //Class Animal overrides
 	@Override
 	public void eat() {
-		System.out.println(getType() + " chomping tree branches");
+		System.out.println(getType() + " gnawing on meat");
 	}
 	
 	@Override
 	public void move() {
-		System.out.println(getType() + " shuffling ponderously");
+		System.out.println(getType() + " stalking through the grass");
 	}
 	
 	@Override
 	public void sleep() {
-		System.out.println(getType() + " sleeping on its feet");
+		System.out.println(getType() + " dozzing on a rock");
 	}
 	
 	protected int setRandomWeightByAge(int a) {
@@ -47,6 +49,4 @@ public class Elephant extends Mammal {
 		}
 		return result;
 	}
-
-
 }

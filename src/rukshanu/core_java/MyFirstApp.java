@@ -1,13 +1,9 @@
-package rukshanu.core_java.lesson1;
+package rukshanu.core_java;
 
-public class Lesson1 {
-
-	public static void main(String[] args) {
-		Definitions def = new Definitions();
-		def.inClassWork();
-		
-		Statements learnStatements = new Statements();
-		learnStatements.inClassWork();
+public class MyFirstApp {
+	//below is method declaration or method signature
+	public static void main (String[] args) {
+		// "syso" + ctrl + spacebar is a shortcut for typing "System.out.ln();"
+		System.out.println("Java Rocks!");
 	}
-
 }
