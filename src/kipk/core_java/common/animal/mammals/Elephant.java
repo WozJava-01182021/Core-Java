@@ -2,6 +2,9 @@ package kipk.core_java.common.animal.mammals;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import kipk.core_java.common.animal.Animal;
+import kipk.core_java.common.animal.Sex;
+
 public class Elephant extends Mammal {
 	//***********************Variables Section*************************
 	
@@ -49,6 +52,25 @@ public class Elephant extends Mammal {
 			result = ThreadLocalRandom.current().nextInt(5,20);
 		}
 		return result;
+	}
+	
+	//Elephant return type is a covariant return
+	public Elephant reproduce() {
+		if (getSex() == Sex.MALE) {
+			System.out.println("Male " + getType() + " looks for female" + getType());
+			return null;
+		}
+		
+		if (getAge() > MATURITY) {
+			Elephant baby = new Elephant();
+			if (ThreadLocalRandom.current().nextBoolean()) {
+				baby.setSex(Sex.MALE);
+			}
+			return baby;
+		} else {
+			System.out.println("Female " + getType() + " is not old enough.");
+			return null;
+		}
 	}
 
 

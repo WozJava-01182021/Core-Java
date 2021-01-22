@@ -39,6 +39,10 @@ public class Animal { //extends Object automatically
 		if (w>=0) weight = w;
 	}
 	
+	private Sex sex = Sex.FEMALE;
+	public Sex getSex() { return sex; }
+	public void setSex(Sex s) { sex = s; }
+	
 	private byte health = 10;
 	public byte getHealth() { return health; }
 	public void setHealth(byte b) {
@@ -62,11 +66,17 @@ public class Animal { //extends Object automatically
 		setAge(a);
 		setWeight(setRandomWeightByAge(a));
 	}
+	
+	public Animal (int a, Sex s) {
+		this(a);
+		setSex(s);
+	}
 //************************METHOD SECTION *****************************
 	//Override Object methods
 	@Override
 	public String toString() {
-		String result = type + "(" + age + ", " + weight + ")";
+		String result = type + "(" + age + ", " + weight;
+		result += ", " + getSex().toString().charAt(0) + ")";
 		return result;
 	}
 	
@@ -98,6 +108,21 @@ public class Animal { //extends Object automatically
 		weight = setRandomWeightByAge(age);
 		if (weight < oldWeight) {
 			weight = oldWeight;
+		}
+	}
+	
+	public Animal reproduce() {
+		if (sex == Sex.MALE) {
+			System.out.println("Male "
+					+ "" + getType() + " looks for female" + getType());
+			return null;
+		}
+		
+		if (age > MATURITY) {
+			return new Animal(0);
+		} else {
+			System.out.println("Female " + getType() + " is not old enough.");
+			return null;
 		}
 	}
 

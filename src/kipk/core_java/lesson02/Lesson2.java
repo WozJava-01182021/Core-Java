@@ -18,6 +18,10 @@ public class Lesson2 {
 		//Lesson 2 Abstract Classes
 		AbstractClasses testAbstractClasses = new AbstractClasses();
 		testAbstractClasses.inClassWork();
+		
+		// Lesson 2 Interfaces
+		Interfaces testInterfaces = new Interfaces();
+		testInterfaces.inClassWork();
 
 	}
 
