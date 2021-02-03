@@ -10,7 +10,7 @@
  *
  * Autoboxing
  */
-package robertd.core_java.Lesson07;
+package robertd.core_java.lesson07;
 
 public class Wrappers  {
 	public void inClassWork() {

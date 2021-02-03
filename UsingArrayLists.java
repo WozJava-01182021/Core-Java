@@ -19,7 +19,7 @@
  *     set(index, object) - replaces the existing element t the specified index
  *     size() - returns the number of elements in the ArrayList
  */
-package robertd.core_java.Lesson07;
+package robertd.core_java.lesson07;
 
 import java.util.ArrayList;
 import java.util.Arrays;
