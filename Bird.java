@@ -1,24 +1,20 @@
-package robertd.core_java.common.animal.mammals;
+package robertd.core_java.common.animal.birds;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import robertd.core_java.common.animal.*;
+import robertd.core_java.common.animal.Animal;
 
-public abstract class Mammal extends Animal {
-	// *********************************VARIABLES SECTION***************************
-	private transient boolean running = false;
+public abstract class Bird extends Animal {
 
-	public boolean isRunning() {
-		return running;
+	protected BirdFood birdfood;
+
+	public String getFood() {
+		return birdfood.toString().toLowerCase();
 	}
 
-	public void setRunning(boolean r) {
-		running = r;
-	}
-
-	public Mammal() {
-		setType("unknown mammal");
+	public Bird() {
+		setType("unknown bird");
 	}
 
 	protected List<String> prey = new ArrayList<>();
@@ -31,9 +27,30 @@ public abstract class Mammal extends Animal {
 		if (speed > 1) {
 			maxRunningSpeed = speed;
 		}
-
 	}
 	// *************************CONSTRUCTOR SECTION*********************************
+
+	public void eat() {
+		System.out.println(getType() + " eats insects");
+	}
+
+	@Override
+	public void move() {
+		if (canFly()) {
+			System.out.println(getType() + " flying!");
+		} else if (canRun()) {
+			System.out.println(getType() + " running!");
+		} else if (canSwim()) {
+			System.out.println(getType() + " swimming!");
+		} else {
+			throw new RuntimeException("Bird can't fly, run or swim: implement the correct behavior in your class");
+		}
+
+	}
+
+	public void sleep() {
+		System.out.println(getType() + " sleeping with eyes open");
+	}
 
 	public void hunt() {
 
@@ -72,35 +89,16 @@ public abstract class Mammal extends Animal {
 		return speed;
 	}
 
-	public void eat() {
-		System.out.println(getType() + " eats its prey");
+	// Bird methods
+	public boolean canFly() {
+		return false;
 	}
 
-	public void move() {
-		System.out.println(getType() + " stalks its prey");
-
+	public boolean canRun() {
+		return true;
 	}
 
-	public void sleep() {
-		System.out.println(getType() + " sleeps in intermediate times");
-	}
-
-	@Override
-	public boolean equals(Object other) {
-		if (this == other)
-			return true;
-		boolean result = false;
-		if (other instanceof Mammal) {
-			result = super.equals(other) 
-					&& maxRunningSpeed == ((Mammal) other).maxRunningSpeed;
-		}
-		return result;
-	}
-	
-	@Override
-	public int hashCode() {
-		int code = super.hashCode();
-		code ^= prey.hashCode();
-		return code;
+	public boolean canSwim() {
+		return false;
 	}
 }

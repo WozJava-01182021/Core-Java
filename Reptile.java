@@ -1,24 +1,14 @@
-package robertd.core_java.common.animal.mammals;
+package robertd.core_java.common.animal.reptiles;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import robertd.core_java.common.animal.*;
 
-public abstract class Mammal extends Animal {
-	// *********************************VARIABLES SECTION***************************
-	private transient boolean running = false;
+public abstract class Reptile extends Animal implements Carnivore {
 
-	public boolean isRunning() {
-		return running;
-	}
-
-	public void setRunning(boolean r) {
-		running = r;
-	}
-
-	public Mammal() {
-		setType("unknown mammal");
+	public Reptile() {
+		setType("unknown reptile");
 	}
 
 	protected List<String> prey = new ArrayList<>();
@@ -72,35 +62,14 @@ public abstract class Mammal extends Animal {
 		return speed;
 	}
 
+	@Override
 	public void eat() {
-		System.out.println(getType() + " eats its prey");
-	}
-
-	public void move() {
-		System.out.println(getType() + " stalks its prey");
-
-	}
-
-	public void sleep() {
-		System.out.println(getType() + " sleeps in intermediate times");
-	}
-
-	@Override
-	public boolean equals(Object other) {
-		if (this == other)
-			return true;
-		boolean result = false;
-		if (other instanceof Mammal) {
-			result = super.equals(other) 
-					&& maxRunningSpeed == ((Mammal) other).maxRunningSpeed;
+		if (preyCaught == null || preyCaught.isEmpty()) {
+			System.out.println(getType() + " has nothing to eat.");
+		} else {
+			System.out.println(getType() + " eats a " + preyCaught);
+			preyCaught = null;
 		}
-		return result;
 	}
-	
-	@Override
-	public int hashCode() {
-		int code = super.hashCode();
-		code ^= prey.hashCode();
-		return code;
-	}
+
 }
