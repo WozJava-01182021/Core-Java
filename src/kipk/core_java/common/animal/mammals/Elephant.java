@@ -13,10 +13,17 @@ public class Elephant extends Mammal {
 	
 	//***********************Constructor Section***********************
 	
+
+	
 	public Elephant() {
 		setType("elephant");
 		MAX_AGE = 70;
 		MATURITY = 15;
+		BIRTH_WEIGHT = 200;
+		ADULT_FEMALE_MIN_WEIGHT = 5300;
+		ADULT_FEMALE_MAX_WEIGHT = 7700;
+		ADULT_MALE_MIN_WEIGHT = 8800;
+		ADULT_MALE_MAX_WEIGHT = 13900;
 		setMaxRunningSpeed(20);
 	}
 	

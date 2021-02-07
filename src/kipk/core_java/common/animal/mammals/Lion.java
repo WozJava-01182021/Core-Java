@@ -12,10 +12,15 @@ public class Lion extends Carnivora {
 	
 	//***********************Constructor Section***********************
 	
-	public Lion() {
+	{
 		setType("lion");
 		MAX_AGE = 14;
 		MATURITY = 5;
+		BIRTH_WEIGHT = 200;
+		ADULT_FEMALE_MIN_WEIGHT = 250;
+		ADULT_FEMALE_MAX_WEIGHT = 400;
+		ADULT_MALE_MIN_WEIGHT = 330;
+		ADULT_MALE_MAX_WEIGHT = 550;
 		setMaxRunningSpeed(50);
 		prey.add("gazelle");
 		prey.add("wildebeast");
@@ -24,13 +29,11 @@ public class Lion extends Carnivora {
 		prey.add("gnu");
 		prey.add("baboon");
 	}
-	public Lion (int a) {
-		this();
-		setAge(a);
-		setWeight(setRandomWeightByAge(a));
-	}
+	
+	
+	public Lion() { }
+	
 	public Lion(int age, int weight, Sex sex) {
-		this();
 		setAge(age);
 		setWeight(weight);
 		setSex(sex);

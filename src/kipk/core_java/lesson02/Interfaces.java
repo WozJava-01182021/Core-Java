@@ -21,9 +21,9 @@
  */
 package kipk.core_java.lesson02;
 
-import kipk.core_java.common.animal.mammals.Cat;
-import kipk.core_java.common.animal.mammals.Dog;
-import kipk.core_java.common.animal.mammals.Horse;
+import kipk.core_java.common.animal.domestic.Cat;
+import kipk.core_java.common.animal.domestic.Dog;
+import kipk.core_java.common.animal.domestic.Horse;
 import kipk.core_java.common.animal.mammals.Lion;
 
 public class Interfaces {

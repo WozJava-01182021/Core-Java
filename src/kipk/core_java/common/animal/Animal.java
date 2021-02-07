@@ -1,11 +1,16 @@
 package kipk.core_java.common.animal;
 
+import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Animal { //extends Object automatically
+import kipk.core_java.common.ecosystem.EcosystemType;
+
+public class Animal extends Object implements Comparable<Animal>, Serializable { //extends Object automatically
 //************************VARIABLES SECTION *****************************
 // Variables with getters and setters
-// Static Variables first
+// Static Variables first, others organized by chapter
+	
+	private static final long serialVersionUID = 1L;
 	
 	//This is a static or class primitive variable
 	private static int count = 0;
@@ -13,7 +18,8 @@ public class Animal { //extends Object automatically
 	
 	// This is an instance reference variable
 	private String type;
-	public String getType() { return type;}
+	public String getType() {
+				return type;}
 	final protected void setType (String t) { type = t; }
 	
 	private int age;
@@ -31,7 +37,12 @@ public class Animal { //extends Object automatically
 	
 	protected int MATURITY = 12;
 	protected int MAX_AGE = 50;
-	public int getMAX_AGE() { return MAX_AGE; }
+	protected int BIRTH_WEIGHT = 10;
+	protected int ADULT_FEMALE_MIN_WEIGHT = 100;
+	protected int ADULT_FEMALE_MAX_WEIGHT = 150;
+	protected int ADULT_MALE_MIN_WEIGHT = 120;
+	protected int ADULT_MALE_MAX_WEIGHT = 180;
+	public int getMaxAge() { return MAX_AGE; }
 	
 	private int weight;
 	public int getWeight() { return weight; }
@@ -48,14 +59,39 @@ public class Animal { //extends Object automatically
 	public void setHealth(byte b) {
 		if(b <= 10 && b >=-10) {
 			health = b;
+		}else {
+			throw new IllegalArgumentException("Health must be between -10 and +1- inclusive");
 		}
 	}
 	
-//************************CONSTRUCTORS SECTION SECTION *****************************	
+	private boolean targeted = false;
+	public boolean isTargeted() { return targeted; }
+	public void setTargeted (boolean b) { targeted = b; }
+	
+	private EcosystemType ecosystemType = EcosystemType.UNKNOWN;
+	public void setEcosystem(EcosystemType est) { ecosystemType = est; }
+	public EcosystemType getEcosystem() { return ecosystemType; }
+	
+//************************CONSTRUCTORS SECTION *****************************	
 	
 	//constructors are automatically made, until you insert your own, similar to how everything extends object initially
+	//Constructors and init blocks
+	//static init blocks first, regular second
+	//not arg constructor third, other constructors next
+	static {
+//		System.out.println("In Animal Static Init Block");
+	}
+	
+	{
+//		System.out.println("In Animal Init Block");
+		MATURITY = 12;
+		MAX_AGE = 50;
+		++count;
+		type = "unkown animal";
+	}
 	
 	public Animal () { //open and close parenthesis are called "No Arg Constructor
+		System.out.println("In Animal No Arg COnstructor");
 		++count; //same as count = count + 1
 		type = "unknown animal";
 	}
@@ -91,6 +127,10 @@ public class Animal { //extends Object automatically
 		System.out.println(type + " sleeping");
 	}
 	
+	public void setRandomWeightByAge() {
+		setRandomWeightByAge(ADULT_FEMALE_MIN_WEIGHT, ADULT_FEMALE_MAX_WEIGHT, ADULT_MALE_MIN_WEIGHT, ADULT_MALE_MAX_WEIGHT, BIRTH_WEIGHT);
+	}
+	
 	protected int setRandomWeightByAge(int a) {
 		int result;
 		if (a < 5) {
@@ -101,11 +141,35 @@ public class Animal { //extends Object automatically
 		return result;
 	}
 	
+	//This is Overloading because we are using the same name and changing the argument list
+	protected void setRandomWeightByAge(int femaleMinWeight, int femaleMaxWeight, int maleMinWeight, int maleMaxWeight, int birthWeight) {
+		
+		int adultMinWeight, adultMaxWeight;
+		
+		if (this.sex == Sex.FEMALE) {
+			adultMinWeight = femaleMinWeight;
+			adultMaxWeight = femaleMaxWeight;
+		}else {
+			adultMinWeight = maleMinWeight;
+			adultMaxWeight = maleMaxWeight;
+		}
+		
+		if (getAge() == 0) {
+			setWeight(birthWeight);
+		}else if (getAge() <= MATURITY) {
+			double proportion = getAge()/(double)MATURITY;
+			setWeight((int)(adultMinWeight * proportion));
+		}else {
+			setWeight(ThreadLocalRandom.current().nextInt(adultMinWeight, adultMaxWeight));
+		}
+		
+	}
+	
 	public void grow() {
 		setAge(age + 1);
 		int oldWeight = weight;
 		
-		weight = setRandomWeightByAge(age);
+		setRandomWeightByAge();
 		if (weight < oldWeight) {
 			weight = oldWeight;
 		}
@@ -125,5 +189,21 @@ public class Animal { //extends Object automatically
 			return null;
 		}
 	}
-
+	
+	//Implement Comparable Interface
+	@Override
+	public int compareTo(Animal otherAnimal) {
+		int result = 0;
+		result = type.compareToIgnoreCase(otherAnimal.type);
+		if (result == 0) {
+			result += new Integer(age).compareTo(new Integer(otherAnimal.age));
+			if (result ==0) {
+				result += new Integer(weight).compareTo(new Integer(otherAnimal.weight));
+				if (result == 0) {
+					result += sex.compareTo(otherAnimal.sex);
+				}
+			}
+		}
+		return result;
+	}
 }

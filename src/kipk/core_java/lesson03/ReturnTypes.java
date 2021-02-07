@@ -2,7 +2,7 @@ package kipk.core_java.lesson03;
 
 import kipk.core_java.common.animal.Animal;
 import kipk.core_java.common.animal.Sex;
-import kipk.core_java.common.animal.mammals.Dog;
+import kipk.core_java.common.animal.domestic.Dog;
 import kipk.core_java.common.animal.mammals.Elephant;
 import kipk.core_java.common.animal.mammals.Lion;
 

@@ -26,6 +26,7 @@ import java.util.List;
 
 import kipk.core_java.common.animal.Animal;
 import kipk.core_java.common.animal.RandomAnimalBuilder;
+import kipk.core_java.common.animal.Sex;
 import kipk.core_java.common.animal.fish.*;
 import kipk.core_java.common.animal.mammals.*;
 
@@ -43,7 +44,7 @@ public class Constructors {
 	private void testOverloadedConstructors() {
 		System.out.println("1. Test constructor overloading");
 		Animal[] zoo = new Animal[4];
-		zoo[0] = new Lion(6);
+		zoo[0] = new Lion(6, 300, Sex.MALE);
 		zoo[1] = new Elephant(30);
 		zoo[2] = new Swordfish(); //this one is calling the no-args constructor
 		zoo[3] = new Swordfish(20); //this one is calling the int constructor

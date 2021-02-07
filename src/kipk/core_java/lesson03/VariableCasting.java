@@ -12,6 +12,9 @@
 package kipk.core_java.lesson03;
 
 import kipk.core_java.common.animal.*;
+import kipk.core_java.common.animal.domestic.Cat;
+import kipk.core_java.common.animal.domestic.Dog;
+import kipk.core_java.common.animal.domestic.Horse;
 import kipk.core_java.common.animal.mammals.*;
 
 public class VariableCasting {

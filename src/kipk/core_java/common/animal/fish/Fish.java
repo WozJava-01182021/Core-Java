@@ -3,11 +3,12 @@ package kipk.core_java.common.animal.fish;
 import kipk.core_java.common.animal.Animal;
 import kipk.core_java.common.animal.Carnivore;
 
-public abstract class Fish extends Animal {
+public abstract class Fish extends Animal implements Carnivore{
 	//***********************Variables Section*************************
 	//***********************Constructor Section***********************
 	
 	public Fish () {
+//		System.out.println("In Fish No Arg Constructor");
 		setType("unkown fish");
 	}
 	

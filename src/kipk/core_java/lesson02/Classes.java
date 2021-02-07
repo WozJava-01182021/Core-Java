@@ -11,6 +11,7 @@
 package kipk.core_java.lesson02;
 
 import kipk.core_java.common.animal.*;
+import kipk.core_java.common.animal.domestic.Horse;
 import kipk.core_java.common.animal.fish.*;
 import kipk.core_java.common.animal.mammals.*;
 

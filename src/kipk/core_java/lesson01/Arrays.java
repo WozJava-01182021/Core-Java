@@ -72,6 +72,7 @@ public class Arrays {
 		kennel[2].weight = 21;
 		
 		// To process the array we can use a afor-each loop
+		// for ('DateType' 'variable' : 'array')
 		for (Dog d : kennel) {
 			d.bark();
 		}

@@ -19,8 +19,8 @@ public abstract class Carnivora extends Mammal implements Carnivore {
 	
 	protected List<String> prey = new ArrayList<>();
 	
-	protected String preyFound = null;
-	protected String preyCaught = null;
+	protected transient String preyFound = null;
+	protected transient String preyCaught = null;
 	
 	
 	
